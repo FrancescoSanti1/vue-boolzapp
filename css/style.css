@@ -11,7 +11,7 @@ body {
     font-size: 16px;
 }
 
-/* #sfondo-verde {
+#sfondo-verde {
     height: 100px;
     background-color: #029588;
     position: fixed;
@@ -29,13 +29,17 @@ body {
     left: 0;
     right: 0;
     z-index: -1;
-} */
+}
 
 .contenitore {
     height: 90vh;
     width: 80%;
     margin: 5vh auto;
     display: flex;
+}
+
+i {
+    font-size: 20px;
 }
 
 
@@ -78,10 +82,11 @@ body {
 }
 
 #attiva-notifiche i {
-    padding: 10px;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
     border-radius: 50%;
+    text-align: center;
     color: #8edafc;
     background-color: white;
     margin-right: 10px;
@@ -118,6 +123,7 @@ body {
 
 #elenco-contatti {
     height: calc(90vh - 200px);
+    background-color: white;
 }
 
 .contatto {
@@ -149,12 +155,79 @@ body {
     width: 60%;
 }
 
+.profilo.destinatario .sx {
+    display: flex;
+    align-items: center;
+}
+
+.profilo.destinatario .sx .ultimo-accesso {
+    font-size: 0.9rem;
+    color: gray;
+}
+
 #contenitore-messaggi {
     height: calc(90vh - 150px);
-    background-color: coral;
+    background-color: #e5ddd5;
+    padding: 20px 40px;
 }
+
+#contenitore-messaggi .riga-messaggio {
+    display: flex;
+    margin: 5px 0;
+}
+
+.riga-messaggio.utente {
+    justify-content: flex-end;
+}
+
+.riga-messaggio.utente .messaggio {
+    background-color: #d5f9ba;
+}
+
+.riga-messaggio.destinatario {
+    justify-content: flex-start;
+}
+
+.riga-messaggio.destinatario .messaggio {
+    background-color: white;
+}
+
+.messaggio {
+    padding: 10px 5px 5px 10px;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.messaggio .data-ora {
+    font-size: 0.7rem;
+    color: gray;
+    text-align: right;
+}
+
+
+
+/* barra "scrivi nuovo messaggio */
 
 #scrivi-messaggio {
     height: 80px;
-    background-color: lightgreen;
+    background-color: #f3eeea;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
+#scrivi-messaggio i {
+    color: #6a7376;
+}
+
+#scrivi-messaggio .nuovo-messaggio {
+    width: 80%;
+}
+
+#scrivi-messaggio .nuovo-messaggio input {
+    width: 100%;
+    border: none;
+    padding: 20px 10px;
+    border-radius: 3px;
+}
+
