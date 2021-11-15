@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+/* #sfondo-verde {
+    height: 100px;
+    background-color: #029588;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#sfondo-grigio {
+    height: calc(100vh - 100px);
+    background-color: #d5dbd9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+} */
+
+.contenitore {
+    height: 90vh;
+    width: 80%;
+    margin: 5vh auto;
+    display: flex;
+}
+
+
+/* parte sinistra relativa ai contatti */
+
+#contenitore-contatti {
+    width: 40%;
+    border-right: 1px lightgray solid;
+}
+
+.profilo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eaeaea;
+    height: 70px;
+    padding: 10px;
+}
+
+.profilo .sx img, .profilo .sx span {
+    vertical-align: middle;
+}
+
+.profilo img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profilo .dx i {
+    margin: 0 5px;
+    color: #b1b1b1;
+}
+
+#attiva-notifiche {
+    display: flex;
+    align-items: center;
+    background-color: #8edafc;
+    padding: 10px 20px;
+    height: 80px;
+}
+
+#attiva-notifiche i {
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: #8edafc;
+    background-color: white;
+    margin-right: 10px;
+}
+
+#attiva-notifiche .attiva {
+    color: grey;
+    text-decoration: underline;
+}
+
+#cerca-chat {
+    background-color: #eaeaea;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#cerca-chat .contenuti {
+    background-color: white;
+    width: 100%;
+    padding: 5px 0;
+}
+
+#cerca-chat i {
+    color: #b1b1b1;
+    margin: 0 20px;
+}
+
+#cerca-chat input {
+    border: none;
+    width: 250px;
+}
+
+#elenco-contatti {
+    height: calc(90vh - 200px);
+}
+
+.contatto {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 10px 20px;
+}
+
+.contatto .sx {
+    display: flex;
+}
+
+.contatto .sx img {
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.contatto .sx .ultimo-messaggio, .contatto .dx .data-ora {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+
+
+/* parte destra relativa alla chat attiva */
+
+#contenitore-chat {
+    width: 60%;
+}
+
+#contenitore-messaggi {
+    height: calc(90vh - 150px);
+    background-color: coral;
+}
+
+#scrivi-messaggio {
+    height: 80px;
+    background-color: lightgreen;
+}
