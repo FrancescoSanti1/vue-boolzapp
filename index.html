@@ -12,7 +12,7 @@
     <div id="sfondo-verde"></div>
     <div id="sfondo-grigio"></div>
 
-    <div class="contenitore">
+    <div id="root" class="contenitore">
         <div id="contenitore-contatti">
             <div class="profilo utente">
                 <div class="sx">
@@ -46,18 +46,19 @@
             </div>
 
             <div id="elenco-contatti">
-                <div class="contatto">
+                <div v-for="(conversazione, i) in contatti" class="contatto" :key="i">
                     <div class="sx">
-                        <img src="img/avatar_1.jpg" alt="contatto 1">
+                        <img :src="conversazione.imgProfilo" :alt="conversazione.nome">
                         <div>
-                            <div class="nome-contatto">Michele</div>
-                            <div class="ultimo-messaggio">Tutto fatto!</div>
+                            <div class="nome-contatto">{{conversazione.nome}}</div>
+                            <div class="ultimo-messaggio">{{conversazione.messaggi[conversazione.messaggi.length - 1].testo}}</div>
                         </div>
                     </div>
                     <div class="dx">
-                        <div class="data-ora">15/11/2021 15:01</div>
+                        <div class="data-ora">{{conversazione.messaggi[conversazione.messaggi.length - 1].data}}</div>
                     </div>
                 </div>
+                
             </div>
         </div>
 
@@ -115,6 +116,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

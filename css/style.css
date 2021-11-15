@@ -124,6 +124,7 @@ i {
 #elenco-contatti {
     height: calc(90vh - 200px);
     background-color: white;
+    overflow-y: auto;
 }
 
 .contatto {
