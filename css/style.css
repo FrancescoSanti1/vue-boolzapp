@@ -98,7 +98,7 @@ i {
 }
 
 #cerca-chat {
-    background-color: #eaeaea;
+    background-color: #fafafa;
     height: 50px;
     display: flex;
     align-items: center;
@@ -131,6 +131,10 @@ i {
     display: flex;
     justify-content: space-between;
     padding: 10px 5px 10px 20px;
+}
+
+.contatto.attivo {
+    background-color: #e9ebeb;
 }
 
 .contatto .sx {

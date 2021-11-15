@@ -46,7 +46,7 @@
             </div>
 
             <div id="elenco-contatti">
-                <div v-for="(conversazione, i) in contatti" class="contatto" :key="i">
+                <div v-for="(conversazione, i) in contatti" class="contatto" :class="conversazioneAttiva === i ? 'attivo' : ''" @click="cambiaConversazioneAttiva(i)" :key="i">
                     <div class="sx">
                         <img :src="conversazione.imgProfilo" :alt="conversazione.nome">
                         <div>
@@ -66,9 +66,9 @@
 
             <div class="profilo destinatario">
                 <div class="sx">
-                    <img src="img/avatar_1.jpg" alt="Immagine profilo destinatario 1">
+                    <img :src="contatti[conversazioneAttiva].imgProfilo" :alt="contatti[conversazioneAttiva].nome">
                     <div>
-                        <div class="nome-destinatario">Michele</div>
+                        <div class="nome-destinatario">{{contatti[conversazioneAttiva].nome}}</div>
                         <div class="ultimo-accesso">Ultimo accesso 15/11/2021 15:01</div>
                     </div>
                 </div>
@@ -81,22 +81,10 @@
             </div>
 
             <div id="contenitore-messaggi">
-                <div class="riga-messaggio utente">
+                <div v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato === 'inviato' ? 'utente' : 'destinatario'">
                     <div class="messaggio">
-                        <p>Tutto fatto.</p>
-                        <div class="data-ora">15/11/2021 15:01</div>
-                    </div>
-                </div>
-                <div class="riga-messaggio utente">
-                    <div class="messaggio">
-                        <p>Tutto fatto.</p>
-                        <div class="data-ora">15/11/2021 15:01</div>
-                    </div>
-                </div>
-                <div class="riga-messaggio destinatario">
-                    <div class="messaggio">
-                        <p>Tutto fatto.</p>
-                        <div class="data-ora">15/11/2021 15:01</div>
+                        <p>{{msg.testo}}</p>
+                        <div class="data-ora">{{msg.data}}</div>
                     </div>
                 </div>
             </div>

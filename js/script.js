@@ -2,6 +2,7 @@ var app = new Vue(
     {
         el: "#root",
         data: {
+            conversazioneAttiva: 0,
             contatti: [
                 {
                     nome: "Michele",
@@ -87,6 +88,11 @@ var app = new Vue(
                     ]
                 }
             ]
+        },
+        methods: {
+            cambiaConversazioneAttiva: function(indice) {
+                this.conversazioneAttiva = indice;
+            }
         }
     }
 );
