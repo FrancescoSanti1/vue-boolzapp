@@ -41,12 +41,12 @@
             <div id="cerca-chat">
                 <div class="contenuti">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" v-model="contattoCercato" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
 
             <div id="elenco-contatti">
-                <div v-for="(conversazione, i) in contatti" class="contatto" :class="conversazioneAttiva === i ? 'attivo' : ''" @click="cambiaConversazioneAttiva(i)" :key="i">
+                <div v-for="(conversazione, i) in contatti" v-if="contattoCercato === '' || conversazione.nome.toLowerCase().startsWith(stringaDaCercare())" class="contatto" :class="conversazioneAttiva === i ? 'attivo' : ''" @click="cambiaConversazioneAttiva(i)" :key="i">
                     <div class="sx">
                         <img :src="conversazione.imgProfilo" :alt="conversazione.nome">
                         <div>

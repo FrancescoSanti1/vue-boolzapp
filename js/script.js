@@ -2,6 +2,7 @@ var app = new Vue(
     {
         el: "#root",
         data: {
+            contattoCercato: "",
             nuovoMessaggio: "",
             conversazioneAttiva: 0,
             contatti: [
@@ -111,6 +112,9 @@ var app = new Vue(
                     stato: "ricevuto"
                 };
                 this.contatti[this.conversazioneAttiva].messaggi.push(nuovaRisposta);
+            },
+            stringaDaCercare: function() {
+                return this.contattoCercato.toLowerCase();
             }
         }
     }
