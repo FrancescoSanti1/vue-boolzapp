@@ -14,17 +14,20 @@ var app = new Vue(
                         {
                             data: "15/11/2021 15:01",
                             testo: "Hai portato a spasso il cane?",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 15:01",
                             testo: "Ricordati di dargli da mangiare.",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 17:01",
                             testo: "Tutto fatto.",
-                            stato: "ricevuto"
+                            stato: "ricevuto",
+                            mostraTendina: false
                         }
                     ]
                 },
@@ -36,17 +39,20 @@ var app = new Vue(
                         {
                             data: "15/11/2021 15:01",
                             testo: "Ciao, come stai?",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 15:01",
                             testo: "Bene, grazie! Stasera ci vediamo?",
-                            stato: "ricevuto"
+                            stato: "ricevuto",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 15:31",
                             testo: "Mi piacerebbe, ma devo andare a fare la spesa.",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         }
                     ]
                 },
@@ -58,17 +64,20 @@ var app = new Vue(
                         {
                             data: "15/11/2021 15:01",
                             testo: "La Marianna va in campagna.",
-                            stato: "ricevuto"
+                            stato: "ricevuto",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 15:01",
                             testo: "Sicuro di non aver sbagliato chat?",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 15:55",
                             testo: "Ah... scusa!",
-                            stato: "ricevuto"
+                            stato: "ricevuto",
+                            mostraTendina: false
                         }
                     ]
                 },
@@ -80,12 +89,14 @@ var app = new Vue(
                         {
                             data: "15/11/2021 15:01",
                             testo: "Lo sai che ha aperto una nuova pizzeria?",
-                            stato: "inviato"
+                            stato: "inviato",
+                            mostraTendina: false
                         },
                         {
                             data: "15/11/2021 16:01",
                             testo: "Sì, ma preferirei andare al cinema.",
-                            stato: "ricevuto"
+                            stato: "ricevuto",
+                            mostraTendina: false
                         }
                     ]
                 }
@@ -99,7 +110,8 @@ var app = new Vue(
                 let nuovoOggetto = {
                     data: "16/11/2021 11:01",
                     testo: this.nuovoMessaggio,
-                    stato: "inviato"
+                    stato: "inviato",
+                    mostraTendina: false
                 };
                 this.contatti[this.conversazioneAttiva].messaggi.push(nuovoOggetto);
                 this.nuovoMessaggio = "";
@@ -109,12 +121,23 @@ var app = new Vue(
                 let nuovaRisposta = {
                     data: "16/11/2021 12:01",
                     testo: "ok.",
-                    stato: "ricevuto"
+                    stato: "ricevuto",
+                    mostraTendina: false
                 };
                 this.contatti[this.conversazioneAttiva].messaggi.push(nuovaRisposta);
             },
             stringaDaCercare: function() {
                 return this.contattoCercato.toLowerCase();
+            },
+            valoreTendina: function(indice) {
+                if(this.contatti[this.conversazioneAttiva].messaggi[indice].mostraTendina) {
+                    this.contatti[this.conversazioneAttiva].messaggi[indice].mostraTendina = false;
+                } else {
+                    this.contatti[this.conversazioneAttiva].messaggi[indice].mostraTendina = true;
+                }
+            },
+            eliminaMessaggio: function(indice) {
+                this.contatti[this.conversazioneAttiva].messaggi.splice(indice, 1);
             }
         }
     }

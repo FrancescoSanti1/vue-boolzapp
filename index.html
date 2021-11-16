@@ -51,11 +51,11 @@
                         <img :src="conversazione.imgProfilo" :alt="conversazione.nome">
                         <div>
                             <div class="nome-contatto">{{conversazione.nome}}</div>
-                            <div class="ultimo-messaggio">{{conversazione.messaggi[conversazione.messaggi.length - 1].testo}}</div>
+                            <div v-if="conversazione.messaggi.length !== 0" class="ultimo-messaggio">{{conversazione.messaggi[conversazione.messaggi.length - 1].testo}}</div>
                         </div>
                     </div>
                     <div class="dx">
-                        <div class="data-ora">{{conversazione.messaggi[conversazione.messaggi.length - 1].data}}</div>
+                        <div v-if="conversazione.messaggi.length !== 0" class="data-ora">{{conversazione.messaggi[conversazione.messaggi.length - 1].data}}</div>
                     </div>
                 </div>
                 
@@ -69,7 +69,8 @@
                     <img :src="contatti[conversazioneAttiva].imgProfilo" :alt="contatti[conversazioneAttiva].nome">
                     <div>
                         <div class="nome-destinatario">{{contatti[conversazioneAttiva].nome}}</div>
-                        <div class="ultimo-accesso">Ultimo accesso {{contatti[conversazioneAttiva].messaggi[contatti[conversazioneAttiva].messaggi.length - 1].data}}</div>
+                        <div v-if="contatti[conversazioneAttiva].messaggi.length !== 0" class="ultimo-accesso">Ultimo accesso {{contatti[conversazioneAttiva].messaggi[contatti[conversazioneAttiva].messaggi.length - 1].data}}</div>
+                        <div v-else class="ultimo-accesso">Non ci sono messaggi in questa conversazione</div>
                     </div>
                 </div>
             
@@ -81,12 +82,24 @@
             </div>
 
             <div id="contenitore-messaggi">
-                <div v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato">
+                <div v-if="contatti[conversazioneAttiva].messaggi.length !== 0" v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato">
                     <div class="messaggio">
-                        <p>{{msg.testo}}</p>
+                        <div class="messaggio-flex">
+                            <p>{{msg.testo}}</p>
+                            <div class="freccia-menu" @click="valoreTendina(i)">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="menu-tendina" :class="msg.mostraTendina ? 'mostra' : ''">
+                                <ul>
+                                    <li>Info messaggio</li>
+                                    <li @click="eliminaMessaggio(i)">Elimina messaggio</li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="data-ora">{{msg.data}}</div>
                     </div>
                 </div>
+                <div v-show="contatti[conversazioneAttiva].messaggi.length === 0" class="conversazione-vuota">Non ci sono messaggi in questa conversazione.</div>
             </div>
 
             <div id="scrivi-messaggio">
