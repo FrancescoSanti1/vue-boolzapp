@@ -38,6 +38,18 @@ body {
     display: flex;
 }
 
+@media screen and (max-width: 1200px) {
+    .contenitore {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .contenitore {
+        width: 98%;
+    }
+}
+
 i {
     font-size: 20px;
 }
@@ -131,6 +143,7 @@ i {
     display: flex;
     justify-content: space-between;
     padding: 10px 5px 10px 20px;
+    cursor: pointer;
 }
 
 .contatto.attivo {
@@ -174,6 +187,7 @@ i {
     height: calc(90vh - 150px);
     background-color: #e5ddd5;
     padding: 20px 40px;
+    overflow-y: auto;
 }
 
 #contenitore-messaggi .riga-messaggio {
@@ -181,19 +195,19 @@ i {
     margin: 5px 0;
 }
 
-.riga-messaggio.utente {
+.riga-messaggio.inviato {
     justify-content: flex-end;
 }
 
-.riga-messaggio.utente .messaggio {
+.riga-messaggio.inviato .messaggio {
     background-color: #d5f9ba;
 }
 
-.riga-messaggio.destinatario {
+.riga-messaggio.ricevuto {
     justify-content: flex-start;
 }
 
-.riga-messaggio.destinatario .messaggio {
+.riga-messaggio.ricevuto .messaggio {
     background-color: white;
 }
 

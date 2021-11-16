@@ -69,7 +69,7 @@
                     <img :src="contatti[conversazioneAttiva].imgProfilo" :alt="contatti[conversazioneAttiva].nome">
                     <div>
                         <div class="nome-destinatario">{{contatti[conversazioneAttiva].nome}}</div>
-                        <div class="ultimo-accesso">Ultimo accesso 15/11/2021 15:01</div>
+                        <div class="ultimo-accesso">Ultimo accesso {{contatti[conversazioneAttiva].messaggi[contatti[conversazioneAttiva].messaggi.length - 1].data}}</div>
                     </div>
                 </div>
             
@@ -81,7 +81,7 @@
             </div>
 
             <div id="contenitore-messaggi">
-                <div v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato === 'inviato' ? 'utente' : 'destinatario'">
+                <div v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato">
                     <div class="messaggio">
                         <p>{{msg.testo}}</p>
                         <div class="data-ora">{{msg.data}}</div>
@@ -94,7 +94,7 @@
                     <i class="far fa-smile"></i>
                 </div>
                 <div class="nuovo-messaggio">
-                    <input type="text" placeholder="Scrivi un messaggio">
+                    <input type="text" v-model="nuovoMessaggio" @keyup.enter="pubblicaNuovoMessaggio" placeholder="Scrivi un messaggio">
                 </div>
                 <div class="microfono">
                     <i class="fas fa-microphone"></i>

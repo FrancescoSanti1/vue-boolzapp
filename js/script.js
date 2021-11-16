@@ -2,6 +2,7 @@ var app = new Vue(
     {
         el: "#root",
         data: {
+            nuovoMessaggio: "",
             conversazioneAttiva: 0,
             contatti: [
                 {
@@ -92,6 +93,24 @@ var app = new Vue(
         methods: {
             cambiaConversazioneAttiva: function(indice) {
                 this.conversazioneAttiva = indice;
+            },
+            pubblicaNuovoMessaggio: function() {
+                let nuovoOggetto = {
+                    data: "16/11/2021 11:01",
+                    testo: this.nuovoMessaggio,
+                    stato: "inviato"
+                };
+                this.contatti[this.conversazioneAttiva].messaggi.push(nuovoOggetto);
+                this.nuovoMessaggio = "";
+                setTimeout(this.generaRisposta, 1000);
+            },
+            generaRisposta: function() {
+                let nuovaRisposta = {
+                    data: "16/11/2021 12:01",
+                    testo: "ok.",
+                    stato: "ricevuto"
+                };
+                this.contatti[this.conversazioneAttiva].messaggi.push(nuovaRisposta);
             }
         }
     }
