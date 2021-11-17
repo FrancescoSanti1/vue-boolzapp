@@ -1,0 +1,322 @@
+/* regole generali */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#sfondo-verde {
+    height: 150px;
+    background-color: #029588;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#sfondo-grigio {
+    height: calc(100vh - 150px);
+    background-color: #d5dbd9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.contenitore {
+    height: 90vh;
+    width: 80%;
+    margin: 5vh auto;
+    display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+    .contenitore {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .contenitore {
+        width: 98%;
+    }
+}
+
+i {
+    font-size: 1.25rem;
+}
+
+
+/* parte sinistra relativa ai contatti */
+
+#contenitore-contatti {
+    width: 40%;
+    min-width: 350px;
+    border-right: 1px lightgray solid;
+}
+
+/* la classe profilo viene riciclata anche per la parte alta del destinatario */
+
+.profilo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eaeaea;
+    height: 70px;
+    padding: 10px;
+}
+
+.profilo .sx img, .profilo .sx span {
+    vertical-align: middle;
+}
+
+.profilo img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profilo .dx i {
+    margin: 0 7px;
+    color: #b1b1b1;
+}
+
+/* banner attiva notifiche */
+
+#attiva-notifiche {
+    display: flex;
+    align-items: center;
+    background-color: #8edafc;
+    padding: 10px 20px;
+    height: 80px;
+}
+
+#attiva-notifiche i {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    color: #8edafc;
+    background-color: white;
+    margin-right: 10px;
+}
+
+#attiva-notifiche .attiva {
+    color: grey;
+    text-decoration: underline;
+}
+
+/* barra di ricerca dei contatti */
+
+#cerca-chat {
+    background-color: #fafafa;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#cerca-chat .contenuti {
+    background-color: white;
+    width: 100%;
+    padding: 5px 0;
+}
+
+#cerca-chat i {
+    color: #b1b1b1;
+    margin: 0 20px;
+}
+
+#cerca-chat input {
+    border: none;
+    width: 250px;
+    padding: 5px 0;
+}
+
+/* box elenco contatti */
+
+#elenco-contatti {
+    height: calc(90vh - 200px);
+    background-color: white;
+    overflow-y: auto;
+}
+
+.contatto {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 10px 20px;
+    cursor: pointer;
+}
+
+.contatto.attivo {
+    background-color: #e9ebeb;
+}
+
+.contatto .sx {
+    display: flex;
+}
+
+.contatto .sx img {
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.contatto .sx .ultimo-messaggio, .contatto .dx .data-ora {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+
+
+/* parte destra relativa alla chat attiva */
+
+#contenitore-chat {
+    width: 60%;
+    min-width: 500px;
+}
+
+.profilo.destinatario .sx {
+    display: flex;
+    align-items: center;
+}
+
+.profilo.destinatario .sx .ultimo-accesso {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+#contenitore-messaggi {
+    height: calc(90vh - 150px);
+    background-color: #e5ddd5;
+    padding: 20px 40px;
+    overflow-y: auto;
+}
+
+#contenitore-messaggi .riga-messaggio {
+    display: flex;
+    margin: 5px 0;
+}
+
+/* le classi "inviato" e "ricevuto" corrispondono alla proprietà "stato" all'interno della lista "messaggi" */
+
+.riga-messaggio.inviato {
+    justify-content: flex-end;
+}
+
+.riga-messaggio.inviato .messaggio {
+    background-color: #d5f9ba;
+}
+
+.riga-messaggio.ricevuto {
+    justify-content: flex-start;
+}
+
+.riga-messaggio.ricevuto .messaggio {
+    background-color: white;
+}
+
+.messaggio {
+    padding: 10px 5px 5px 10px;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.messaggio .messaggio-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.messaggio .messaggio-flex .freccia-menu {
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.messaggio .messaggio-flex i {
+    font-size: 0.9rem;
+    color: grey;
+    display: none;
+}
+
+.messaggio:hover .messaggio-flex i {
+    display: block;
+}
+
+.messaggio .data-ora {
+    font-size: 0.7rem;
+    color: gray;
+    text-align: right;
+}
+
+.menu-tendina {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    text-align: right;
+    display: none;
+    z-index: 1;
+}
+
+.menu-tendina.mostra {
+    display: block;
+}
+
+.menu-tendina ul {
+    list-style-type: none;
+    background-color: white;
+    padding: 5px 0;
+}
+
+.menu-tendina ul li {
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.menu-tendina ul li:hover {
+    background-color: #e9ebeb;
+}
+
+.conversazione-vuota {
+    text-align: center;
+}
+
+
+/* barra "scrivi nuovo messaggio */
+
+#scrivi-messaggio {
+    height: 80px;
+    background-color: #f3eeea;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#scrivi-messaggio i {
+    color: #6a7376;
+    font-size: 1.5rem;
+}
+
+#scrivi-messaggio .nuovo-messaggio {
+    width: 80%;
+}
+
+#scrivi-messaggio .nuovo-messaggio input {
+    width: 100%;
+    border: none;
+    padding: 20px 10px;
+    border-radius: 3px;
+}
+
