@@ -108,6 +108,8 @@ var app = new Vue(
             },
             pubblicaNuovoMessaggio: function() {
                 // nel caso dei nuovi messaggi ho aggiunto anche i secondi, giusto per vedere una differenza e controllare che tutto funzioni
+                // creo un nuovo messaggio e lo aggiungo all'array dei messaggi all'interno della conversazione attiva
+                // poi invoco la funzione che genera la risposta, con almeno un secondo di ritardo
                 let nuovoOggetto = {
                     data: dayjs().format('DD/MM/YYYY HH:mm:ss'), 
                     testo: this.nuovoMessaggio,
@@ -120,6 +122,7 @@ var app = new Vue(
             },
             generaRisposta: function() {
                 // come sopra, ho aggiunto anche i secondi
+                // creo un nuovo messaggio e lo aggiunto all'array dei messaggi all'interno della conversazione attiva
                 let nuovaRisposta = {
                     data: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     testo: "ok.",
@@ -129,9 +132,12 @@ var app = new Vue(
                 this.contatti[this.conversazioneAttiva].messaggi.push(nuovaRisposta);
             },
             stringaDaCercare: function() {
+                // mi serve per poter aggirare la case-sensitivity del metodo startsWith()
+                // così confronto due stringhe entrambe con tutte minuscole
                 return this.contattoCercato.toLowerCase();
             },
             valoreTendina: function(indice) {
+                // questa soluzione non mi convince granché perché ho dovuto creare una nuova proprietà all'interno dei messaggi per poter controllare la classe "mostra" su ogni tendina
                 if(this.contatti[this.conversazioneAttiva].messaggi[indice].mostraTendina) {
                     this.contatti[this.conversazioneAttiva].messaggi[indice].mostraTendina = false;
                 } else {

@@ -53,7 +53,7 @@ body {
 }
 
 i {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 
@@ -61,6 +61,7 @@ i {
 
 #contenitore-contatti {
     width: 40%;
+    min-width: 350px;
     border-right: 1px lightgray solid;
 }
 
@@ -85,7 +86,7 @@ i {
 }
 
 .profilo .dx i {
-    margin: 0 5px;
+    margin: 0 7px;
     color: #b1b1b1;
 }
 
@@ -182,6 +183,7 @@ i {
 
 #contenitore-chat {
     width: 60%;
+    min-width: 500px;
 }
 
 .profilo.destinatario .sx {
@@ -264,6 +266,7 @@ i {
     top: 20px;
     text-align: right;
     display: none;
+    z-index: 1;
 }
 
 .menu-tendina.mostra {
@@ -273,10 +276,12 @@ i {
 .menu-tendina ul {
     list-style-type: none;
     background-color: white;
+    padding: 5px 0;
 }
 
 .menu-tendina ul li {
     padding: 5px;
+    margin: 5px;
     cursor: pointer;
 }
 

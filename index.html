@@ -135,6 +135,10 @@
                     <i class="far fa-smile"></i>
                 </div>
                 <div class="nuovo-messaggio">
+                    <!-- 
+                        con v-model metto in comunicazione l'input con la proprietà "nuovoMessaggio" 
+                        al click invoco la funzione che crea un nuovo oggetto e lo aggiunge all'array di messaggi
+                    -->
                     <input type="text" v-model="nuovoMessaggio" @keyup.enter="pubblicaNuovoMessaggio" placeholder="Scrivi un messaggio">
                 </div>
                 <div class="microfono">
