@@ -112,10 +112,11 @@
                     <div class="messaggio">
                         <div class="messaggio-flex">
                             <p>{{msg.testo}}</p>
-                            <div class="freccia-menu" @click="valoreTendina(i)">
+                            <div class="freccia-menu" @click="valoreTendina(i)" :riferimento="i">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="menu-tendina" :class="msg.mostraTendina ? 'mostra' : ''">
+                            <!-- solo quando la condizione qui sotto è verificata, che viene assegnata la classe "mostra" -->
+                            <div class="menu-tendina" :class="i === indiceTendina ? 'mostra' : ''">
                                 <ul>
                                     <li>Info messaggio</li>
                                     <li @click="eliminaMessaggio(i)">Elimina messaggio</li>
