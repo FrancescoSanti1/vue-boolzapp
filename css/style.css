@@ -1,3 +1,5 @@
+/* regole generali */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
@@ -62,6 +64,8 @@ i {
     border-right: 1px lightgray solid;
 }
 
+/* la classe profilo viene riciclata anche per la parte alta del destinatario */
+
 .profilo {
     display: flex;
     justify-content: space-between;
@@ -84,6 +88,8 @@ i {
     margin: 0 5px;
     color: #b1b1b1;
 }
+
+/* banner attiva notifiche */
 
 #attiva-notifiche {
     display: flex;
@@ -109,6 +115,8 @@ i {
     text-decoration: underline;
 }
 
+/* barra di ricerca dei contatti */
+
 #cerca-chat {
     background-color: #fafafa;
     height: 50px;
@@ -131,7 +139,10 @@ i {
 #cerca-chat input {
     border: none;
     width: 250px;
+    padding: 5px 0;
 }
+
+/* box elenco contatti */
 
 #elenco-contatti {
     height: calc(90vh - 200px);
@@ -195,6 +206,8 @@ i {
     margin: 5px 0;
 }
 
+/* le classi "inviato" e "ricevuto" corrispondono alla proprietà "stato" all'interno della lista "messaggi" */
+
 .riga-messaggio.inviato {
     justify-content: flex-end;
 }
@@ -239,6 +252,12 @@ i {
     display: block;
 }
 
+.messaggio .data-ora {
+    font-size: 0.7rem;
+    color: gray;
+    text-align: right;
+}
+
 .menu-tendina {
     position: absolute;
     right: 0;
@@ -265,12 +284,6 @@ i {
     background-color: #e9ebeb;
 }
 
-.messaggio .data-ora {
-    font-size: 0.7rem;
-    color: gray;
-    text-align: right;
-}
-
 .conversazione-vuota {
     text-align: center;
 }
@@ -288,6 +301,7 @@ i {
 
 #scrivi-messaggio i {
     color: #6a7376;
+    font-size: 1.5rem;
 }
 
 #scrivi-messaggio .nuovo-messaggio {

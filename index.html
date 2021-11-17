@@ -13,6 +13,7 @@
     <div id="sfondo-grigio"></div>
 
     <div id="root" class="contenitore">
+
         <div id="contenitore-contatti">
             <div class="profilo utente">
                 <div class="sx">
@@ -35,7 +36,6 @@
                     <div>Ricevi notifiche di nuovi utenti</div>
                     <div class="attiva">Attiva notifiche desktop</div>
                 </div>
-                
             </div>
 
             <div id="cerca-chat">
@@ -46,29 +46,46 @@
             </div>
 
             <div id="elenco-contatti">
-                <div v-for="(conversazione, i) in contatti" v-if="contattoCercato === '' || conversazione.nome.toLowerCase().startsWith(stringaDaCercare())" class="contatto" :class="conversazioneAttiva === i ? 'attivo' : ''" @click="cambiaConversazioneAttiva(i)" :key="i">
+                <!-- 
+                    il for seleziona ogni volta un oggetto dai contatti
+                    if mostra il contatto quando la stringa di ricerca è vuota oppure quando il testo inserito corrisponde a quello che ritorna la funzione (che serve solamente per confrontare due stringhe tutte minuscole)
+                    la classe "attivo" viene applicata solo alla conversazione attiva
+                    al click viene aggiornato il valore di conversazioneAttiva corrispondente al valore di i dell'elemento cliccato
+                -->
+                <div v-for="(conversazione, i) in contatti" 
+                v-if="contattoCercato === '' || conversazione.nome.toLowerCase().startsWith(stringaDaCercare())" 
+                class="contatto" :class="conversazioneAttiva === i ? 'attivo' : ''" 
+                @click="cambiaConversazioneAttiva(i)" :key="i">
+
                     <div class="sx">
                         <img :src="conversazione.imgProfilo" :alt="conversazione.nome">
                         <div>
                             <div class="nome-contatto">{{conversazione.nome}}</div>
+
+                            <!-- se non ci sono più messaggi, non viene più mostrato -->
                             <div v-if="conversazione.messaggi.length !== 0" class="ultimo-messaggio">{{conversazione.messaggi[conversazione.messaggi.length - 1].testo}}</div>
                         </div>
                     </div>
                     <div class="dx">
+                        <!-- se non ci sono più messaggi, non viene più mostrato -->
                         <div v-if="conversazione.messaggi.length !== 0" class="data-ora">{{conversazione.messaggi[conversazione.messaggi.length - 1].data}}</div>
                     </div>
                 </div>
-                
             </div>
         </div>
 
+        
         <div id="contenitore-chat">
 
             <div class="profilo destinatario">
+
+                <!-- i dati presenti in questa parte fanno tutti riferimento alla variabile conversazioneAttiva per andare a mostrare i dati corrispondenti alla chat di volta in volta selezionata -->
                 <div class="sx">
                     <img :src="contatti[conversazioneAttiva].imgProfilo" :alt="contatti[conversazioneAttiva].nome">
                     <div>
                         <div class="nome-destinatario">{{contatti[conversazioneAttiva].nome}}</div>
+
+                        <!-- se non ci sono più messaggi, viene mostrato il messaggio presente nell'else -->
                         <div v-if="contatti[conversazioneAttiva].messaggi.length !== 0" class="ultimo-accesso">Ultimo accesso {{contatti[conversazioneAttiva].messaggi[contatti[conversazioneAttiva].messaggi.length - 1].data}}</div>
                         <div v-else class="ultimo-accesso">Non ci sono messaggi in questa conversazione</div>
                     </div>
@@ -82,7 +99,16 @@
             </div>
 
             <div id="contenitore-messaggi">
-                <div v-if="contatti[conversazioneAttiva].messaggi.length !== 0" v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" class="riga-messaggio" :class="msg.stato">
+
+                <!--
+                    se l'array messaggi è vuoto, questa parte viene ignorata
+                    il for cicla all'interno dell'array messaggi della conversazione attiva
+                    la classe definita dalla proprietà "stato" definisce se il messaggio è dell'utente o dell'interlocutore, e agli stessi valori sono asssociate le classi CSS corrispondenti
+                -->
+                <div v-if="contatti[conversazioneAttiva].messaggi.length !== 0" 
+                v-for="(msg, i) in contatti[conversazioneAttiva].messaggi" 
+                class="riga-messaggio" :class="msg.stato">
+
                     <div class="messaggio">
                         <div class="messaggio-flex">
                             <p>{{msg.testo}}</p>
@@ -99,6 +125,8 @@
                         <div class="data-ora">{{msg.data}}</div>
                     </div>
                 </div>
+
+                <!-- se non ci sono più messaggi, viene mostrato il messaggio presente nell'else -->
                 <div v-show="contatti[conversazioneAttiva].messaggi.length === 0" class="conversazione-vuota">Non ci sono messaggi in questa conversazione.</div>
             </div>
 
@@ -118,6 +146,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js" integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

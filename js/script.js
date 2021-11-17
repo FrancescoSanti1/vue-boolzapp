@@ -24,7 +24,7 @@ var app = new Vue(
                             mostraTendina: false
                         },
                         {
-                            data: "15/11/2021 17:01",
+                            data: dayjs().format('DD/MM/YYYY HH:mm'),
                             testo: "Tutto fatto.",
                             stato: "ricevuto",
                             mostraTendina: false
@@ -49,7 +49,7 @@ var app = new Vue(
                             mostraTendina: false
                         },
                         {
-                            data: "15/11/2021 15:31",
+                            data: dayjs().format('DD/MM/YYYY HH:mm'),
                             testo: "Mi piacerebbe, ma devo andare a fare la spesa.",
                             stato: "inviato",
                             mostraTendina: false
@@ -74,7 +74,7 @@ var app = new Vue(
                             mostraTendina: false
                         },
                         {
-                            data: "15/11/2021 15:55",
+                            data: dayjs().format('DD/MM/YYYY HH:mm'),
                             testo: "Ah... scusa!",
                             stato: "ricevuto",
                             mostraTendina: false
@@ -93,7 +93,7 @@ var app = new Vue(
                             mostraTendina: false
                         },
                         {
-                            data: "15/11/2021 16:01",
+                            data: dayjs().format('DD/MM/YYYY HH:mm'),
                             testo: "Sì, ma preferirei andare al cinema.",
                             stato: "ricevuto",
                             mostraTendina: false
@@ -107,8 +107,9 @@ var app = new Vue(
                 this.conversazioneAttiva = indice;
             },
             pubblicaNuovoMessaggio: function() {
+                // nel caso dei nuovi messaggi ho aggiunto anche i secondi, giusto per vedere una differenza e controllare che tutto funzioni
                 let nuovoOggetto = {
-                    data: "16/11/2021 11:01",
+                    data: dayjs().format('DD/MM/YYYY HH:mm:ss'), 
                     testo: this.nuovoMessaggio,
                     stato: "inviato",
                     mostraTendina: false
@@ -118,8 +119,9 @@ var app = new Vue(
                 setTimeout(this.generaRisposta, 1000);
             },
             generaRisposta: function() {
+                // come sopra, ho aggiunto anche i secondi
                 let nuovaRisposta = {
-                    data: "16/11/2021 12:01",
+                    data: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     testo: "ok.",
                     stato: "ricevuto",
                     mostraTendina: false
