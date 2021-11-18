@@ -101,24 +101,31 @@ var app = new Vue(
                 // nel caso dei nuovi messaggi ho aggiunto anche i secondi, giusto per vedere una differenza e controllare che tutto funzioni
                 // creo un nuovo messaggio e lo aggiungo all'array dei messaggi all'interno della conversazione attiva
                 // poi invoco la funzione che genera la risposta, con almeno un secondo di ritardo
+                let chatSelezionata = this.contatti[this.conversazioneAttiva].messaggi;
+                
                 let nuovoOggetto = {
                     data: dayjs().format('DD/MM/YYYY HH:mm:ss'), 
                     testo: this.nuovoMessaggio,
                     stato: "inviato",
                 };
-                this.contatti[this.conversazioneAttiva].messaggi.push(nuovoOggetto);
+                chatSelezionata.push(nuovoOggetto);
+
+                // svuoto il campo di input
                 this.nuovoMessaggio = "";
-                setTimeout(this.generaRisposta, 1000);
+
+                // invoco la funzione per la risposta, passando come argomento la chat selezionata al momento della pressione del tasto "invio"
+                setTimeout(this.generaRisposta, 1000, chatSelezionata);
             },
-            generaRisposta: function() {
+            generaRisposta: function(chat) {
                 // come sopra, ho aggiunto anche i secondi
                 // creo un nuovo messaggio e lo aggiunto all'array dei messaggi all'interno della conversazione attiva
+
                 let nuovaRisposta = {
                     data: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     testo: "ok.",
                     stato: "ricevuto",
                 };
-                this.contatti[this.conversazioneAttiva].messaggi.push(nuovaRisposta);
+                chat.push(nuovaRisposta);
             },
             stringaDaCercare: function() {
                 // mi serve per poter aggirare la case-sensitivity del metodo startsWith()
